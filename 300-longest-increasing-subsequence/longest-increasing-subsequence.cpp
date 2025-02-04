@@ -14,21 +14,17 @@ int f(int ind,int prev,vector<int>& nums,vector<vector<int>> &dp){
 }
     int lengthOfLIS(vector<int>& nums) {
        int n=nums.size();
-       vector<int> next(n+1,0),cur(n+1,0);
-        for(int ind=n-1;ind>=0;ind--){
-       for(int prev=ind-1;prev >=-1;prev--){
-            int length=0+next[prev+1];
-    if(prev==-1||nums[ind]>nums[prev]) {
-         length=max(length,1+next[ind+1]);
+       vector<int> dp(n,1);
+       int maxi=1;
+        for(int i=0;i<n;i++){
+            for(int prev=0;prev<i;prev++){
+                if(nums[prev]<nums[i]){
+                    dp[i]=max(dp[i],1+dp[prev]);
+                }
 
-    }
-     cur[prev+1]= length;
-       }
-       next=cur;
+            }
+            maxi=max(maxi,dp[i]);
         }
-        
-        
-        return next[-1+1];
-
+        return maxi;
     }
 };
