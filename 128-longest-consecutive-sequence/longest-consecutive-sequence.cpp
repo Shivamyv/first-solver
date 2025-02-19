@@ -26,9 +26,9 @@ public:
               
                 while (st.find(x + 1) != st.end()) {
                     
-                    x = x + 1; 
+                    x ++; 
                     
-                    cnt = cnt + 1; 
+                    cnt++; 
                 }
               
                 longest = max(longest, cnt);
