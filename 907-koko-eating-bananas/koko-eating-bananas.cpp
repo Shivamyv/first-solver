@@ -11,7 +11,7 @@ class Solution {
         return maxi;
       }
    double f(vector<int>& piles, int h){
-    double totalhrs = 0.0;
+    double totalhrs = 0;
    
     double n=piles.size();
     for(double i=0;i<n;i++){
