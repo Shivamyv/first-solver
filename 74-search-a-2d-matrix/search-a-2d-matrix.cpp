@@ -1,7 +1,7 @@
 class Solution {
 public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
-        int m =matrix.size(), n = size(matrix[0]);
+        int m =matrix.size(), n =matrix[0].size();
         int l = 0, r = m-1,mid;
         while(l<=r){
             mid = l+((r-l)/2);
