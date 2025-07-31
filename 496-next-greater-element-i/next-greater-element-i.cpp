@@ -6,8 +6,7 @@ public:
        int m=nums2.size();
        unordered_map<int,int>mpp;
 
-
-       
+        vector<int>ans;
         stack<int>st;
        for(int i=m-1;i>=0;i--){
         int curelement=nums2[i];
@@ -20,7 +19,7 @@ public:
 
             st.push(curelement);
        }
-            vector<int>ans;
+         
              for(int num:nums1){
                 ans.push_back(mpp[num]);
              }
