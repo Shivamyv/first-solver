@@ -10,28 +10,26 @@ long long powerLL(int base, int exp) {
 
     int numberOfWays(int n, int x) {
      
-    vector<vector<int>>dp(n+2,vector<int>(n+1,0));
-      for(int ind=1;ind<=n+1;ind++){
-        dp[ind][0]=1;
-      }
-      
-     
-     
-     for (int ind = n; ind >= 1; ind--) {
-       long long p = powerLL(ind, x);
-      for (int sum = 0; sum <= n; sum++) {
+    vector<int> next(n + 1, 0), curr(n + 1, 0);
 
+       
+        for (int sum = 0; sum <= n; sum++) {
+            next[sum] = (sum == 0 ? 1 : 0);
+        }
 
-        int notTake = dp[ind + 1][sum];
+        
+        for (int ind = n; ind >= 1; ind--) {
+            long long p = powerLL(ind, x);
+            for (int sum = 0; sum <= n; sum++) {
+                int notTake = next[sum];
                 int take = 0;
-                if (p <= sum) take = dp[ind + 1][sum - p];
-     dp[ind][sum]=(take+notTake) % mod;
-   
-     
+                if (p <= sum) take = next[sum - (int)p];
+                curr[sum] = (take + notTake) % mod;
+            }
+            next = curr; 
+        }
 
-     }
-     }
-     return dp[1][n];
+        return next[n];
 
     }
 };
