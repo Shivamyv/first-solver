@@ -7,25 +7,31 @@ long long powerLL(int base, int exp) {
     return res;
 }
 
-int f(int ind,int sum,int x,vector<vector<int>>& dp){
-   if(sum==0) return 1;
-   if(sum<0) return 0;
-   long long p = powerLL(ind, x);
-   if (p > sum) return 0; 
-   if(dp[ind][sum]!=-1) return dp[ind][sum]; 
-   int take=f(ind+1,sum-p,x,dp);
-   int nottake=f(ind+1,sum,x,dp);
-    return dp[ind][sum]=(take+nottake) % mod;
-   
 
-}
     int numberOfWays(int n, int x) {
      
-    vector<vector<int>>dp(n+1,vector<int>(n+1,-1));
+    vector<vector<int>>dp(n+2,vector<int>(n+1,0));
+      for(int ind=1;ind<=n+1;ind++){
+        dp[ind][0]=1;
+      }
+      
+     
+     
+     for (int ind = n; ind >= 1; ind--) {
+       long long p = powerLL(ind, x);
+      for (int sum = 0; sum <= n; sum++) {
 
-      return f(1,n,x,dp);
 
+        int notTake = dp[ind + 1][sum];
+                int take = 0;
+                if (p <= sum) take = dp[ind + 1][sum - p];
+     dp[ind][sum]=(take+notTake) % mod;
+   
+     
 
+     }
+     }
+     return dp[1][n];
 
     }
 };
