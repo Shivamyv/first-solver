@@ -19,11 +19,9 @@ int f(int ind,int sum,int x,vector<vector<int>>& dp){
    
 
 }
-
-
     int numberOfWays(int n, int x) {
      
-    vector<vector<int>>dp(n+2,vector<int>(n+1,-1));
+    vector<vector<int>>dp(n+1,vector<int>(n+1,-1));
 
       return f(1,n,x,dp);
 
