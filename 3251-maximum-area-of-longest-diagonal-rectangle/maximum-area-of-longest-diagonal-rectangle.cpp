@@ -10,7 +10,7 @@ public:
        int maxarea=0;
         
        for(int i=0;i<n;i++){
-        for(int j=0;j<m;j++){
+       
          length=dimensions[i][0];
          width=dimensions[i][1];
       diaglen=sqrt((length*length)+(width*width));
@@ -23,7 +23,7 @@ public:
             maxarea=max(maxarea,area);
         }
     
-        }
+        
        } 
        return maxarea;
 
