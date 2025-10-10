@@ -9,7 +9,7 @@ public:
             ans.push_back(nums[i]);
         }
         for(int j=0;j<ans.size();j++){
-            cnt=cnt|ans[j];
+            cnt |=ans[j];
         }
 
 
