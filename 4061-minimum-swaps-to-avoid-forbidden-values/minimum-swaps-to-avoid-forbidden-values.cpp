@@ -6,10 +6,10 @@ public:
        map<int,int>amap,bmap,matching;
        for(int i=0;i<n;i++){
         if(nums[i]==forbidden[i]){
-            cnt+=(nums[i]==forbidden[i]);
+            cnt+=1;
             matching[nums[i]]++;
             maxi=max(maxi,matching[nums[i]]);
-
+           
         }
         amap[nums[i]]++;
         bmap[forbidden[i]]++;
