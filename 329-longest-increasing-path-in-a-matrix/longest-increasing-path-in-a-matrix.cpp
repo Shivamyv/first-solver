@@ -4,11 +4,14 @@ public:
     if(i<0 || j<0 || i>=n|| j>=m || matrix[i][j]<=prevval) return 0;
     if(dp[i][j]!=-1) return dp[i][j];
     int ans=1;
+   int delrow[4]={-1,0,+1,0};
+   int delcol[4]={0,+1,0,-1};
+   for(int d=0;d<4;d++){
+    int ni=i+delrow[d];
+    int nj=j+delcol[d];
+    ans=max(ans,1+solve(matrix,ni,nj,matrix[i][j],n,m,dp));
+   }
 
-   ans=max(ans,1+solve(matrix,i-1,j,matrix[i][j],n,m,dp));// top
-   ans=max(ans,1+solve(matrix,i+1,j,matrix[i][j],n,m,dp));//down
-   ans=max(ans,1+solve(matrix,i,j-1,matrix[i][j],n,m,dp));//left
-   ans=max(ans,1+solve(matrix,i,j+1,matrix[i][j],n,m,dp));//right
 
    dp[i][j]=ans;
    return ans;
