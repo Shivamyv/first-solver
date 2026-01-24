@@ -2,7 +2,7 @@ class Solution {
 public:
     int minPairSum(vector<int>& nums) {
         int n=nums.size();
-        int maxi=0;
+        int maxi=INT_MIN;
         int ans=0;
        
         sort(nums.begin(),nums.end());
@@ -15,14 +15,8 @@ public:
                 maxi=ans;
                 
             }
-           
-            
    
         }
-
-
-        
-
 
     return maxi;
 
