@@ -11,7 +11,7 @@ public:
         }
         if(totalsum %2!= 0) return false;
         long long curr=0;
-        for(int i=0;i<n;i++){
+        for(int i=0;i<n-1;i++){
             for(int j=0;j<m;j++){
                 curr+=grid[i][j];
             }
@@ -19,7 +19,7 @@ public:
         }
         curr=0;
         
-            for(int j=0;j<m;j++){
+            for(int j=0;j<m-1;j++){
                 for(int i=0;i<n;i++){
                 curr+=grid[i][j]; 
             }
