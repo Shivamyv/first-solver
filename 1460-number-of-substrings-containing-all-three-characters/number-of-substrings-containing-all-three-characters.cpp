@@ -12,7 +12,7 @@ public:
           freq[s[l]-'a']--;
           l++;
           }
-          r++;           
+          r++;          
         }
     return count;
     }
