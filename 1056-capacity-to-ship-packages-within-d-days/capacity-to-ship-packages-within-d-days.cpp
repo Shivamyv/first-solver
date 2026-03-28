@@ -1,31 +1,39 @@
 class Solution {
-    bool func(int x,vector<int>& weights,int days){
-        int c=1;
-        int sum=0;
-        for(int i=0;i<weights.size();i++){
-            if(sum+weights[i]>x){
-                c++;
-                sum=0;
-            }
-            sum+=weights[i];
-        }
-        return c<=days;
-    }
 public:
+    bool possible(vector<int>& weights, int days,int capacity){
+       int n=weights.size();
+       int currentweight=0;
+       int currentdays=1;
+       for(int i=0;i<n;i++){
+          if(weights[i]+currentweight>capacity){
+            currentdays++;
+            currentweight=0;
+          }
+            currentweight+=weights[i];
+
+       }
+       return currentdays<=days;
+    }
+
     int shipWithinDays(vector<int>& weights, int days) {
-        int ans=0;
-        int l = *max_element(weights.begin(), weights.end());
-        int r=accumulate(weights.begin(),weights.end(),0);
-        while(l<=r){
-            int mid=l+(r-l) /2;
-            if(func(mid,weights,days)){
-                ans=mid;
-                r=mid-1;
-            }
-            else{
-                l=mid+1;
-            }
+        int n=weights.size();
+       int mini=*max_element(weights.begin(),weights.end());
+       int maxi = accumulate(weights.begin(), weights.end(), 0);
+      int low=mini;
+      int high=maxi;
+      int ans=high;
+      while(low<=high){
+        int mid=low+(high-low)/2;
+        if(possible(weights,days,mid)){
+            ans=mid;
+            high=mid-1;
         }
-        return ans;
+        else{
+            low=mid+1;
+        }
+      }
+
+      return ans;
+        
     }
 };
