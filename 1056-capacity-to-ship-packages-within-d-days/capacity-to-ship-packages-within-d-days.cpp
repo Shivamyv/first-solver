@@ -9,7 +9,9 @@ public:
             currentdays++;
             currentweight=0;
           }
+          
             currentweight+=weights[i];
+          
 
        }
        return currentdays<=days;
