@@ -9,21 +9,17 @@ public:
             currentdays++;
             currentweight=0;
           }
-          
             currentweight+=weights[i];
-          
-
        }
        return currentdays<=days;
     }
-
     int shipWithinDays(vector<int>& weights, int days) {
         int n=weights.size();
        int mini=*max_element(weights.begin(),weights.end());
        int maxi = accumulate(weights.begin(), weights.end(), 0);
       int low=mini;
       int high=maxi;
-      int ans=high;
+      int ans=-1;
       while(low<=high){
         int mid=low+(high-low)/2;
         if(possible(weights,days,mid)){
