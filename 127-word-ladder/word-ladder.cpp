@@ -1,7 +1,7 @@
 class Solution {
 public:
-int bfs(string beginWord, string endWord, vector<string>& wordList){
-     queue<pair<string,int>>q;
+    int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
+        queue<pair<string,int>>q;
       q.push({beginWord,1});
       unordered_set<string>st(wordList.begin(),wordList.end());
       if(st.find(endWord)==st.end()) return 0;
@@ -11,6 +11,7 @@ int bfs(string beginWord, string endWord, vector<string>& wordList){
         string word=it.first;
         int distance=it.second;
         if(word==endWord) return distance;
+        
          for(int i=0;i<word.size();i++){
              char original=word[i];
              for(char ch='a';ch<='z';ch++){
@@ -25,10 +26,7 @@ int bfs(string beginWord, string endWord, vector<string>& wordList){
       }
          return 0;
 
-      }
 
 
-    int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
-        return bfs(beginWord,endWord,wordList);
     }
 };
